@@ -16,9 +16,8 @@ public class AIPlayerMinimax extends AIPlayer {
          // depth, max-turn, alpha, beta
       return new int[] {result[1], result[2]};   // row, col
    }
-   /** Recursive minimax at level of depth for either maximizing or minimizing player.
-       Return int[3] of {score, row, col}  */
-  /** Minimax (recursive) at level of depth for maximizing or minimizing player
+ 
+   /** Minimax (recursive) at level of depth for maximizing or minimizing player
        with alpha-beta cut-off. Return int[3] of {score, row, col}  */
    private int[] minimax(int depth, Seed player, int alpha, int beta) {
       // Generate possible next moves in a list of int[2] of {row, col}.

@@ -15,7 +15,7 @@ public class XoPanel extends JPanel {
    public static final String TITLE = "Tic Tac Toe";
  
    // Name-constants for the various dimensions used for graphics drawing
-   public static final int CELL_SIZE = 100; // cell width and height (square)
+   public static final int CELL_SIZE = 150; // cell width and height (square)
    public static final int CANVAS_WIDTH = CELL_SIZE * COLS;  // the drawing canvas
    public static final int CANVAS_HEIGHT = CELL_SIZE * ROWS;
    public static final int GRID_WIDTH = 8;  // Grid-line's width
@@ -30,7 +30,6 @@ public class XoPanel extends JPanel {
    private Seed currentPlayer;     // the current player
    private JLabel statusBar;       // for displaying status message
    
-   //AIPlayerMinimax ai = new AIPlayerMinimax(board);
    /** Constructor to setup the UI and game components */
    public XoPanel() {
  
@@ -45,6 +44,8 @@ public class XoPanel extends JPanel {
             int colSelected = mouseX / CELL_SIZE;
  
             if (currentState == GameState.PLAYING) {
+                AIPlayerMinimax ai = new AIPlayerMinimax(board);
+                ai.setSeed(Seed.NOUGHT);
                if (rowSelected >= 0 && rowSelected < ROWS
                      && colSelected >= 0 && colSelected < COLS
                      && board.cells[rowSelected][colSelected].content == Seed.EMPTY) {
@@ -52,7 +53,7 @@ public class XoPanel extends JPanel {
                   updateGame(currentPlayer, rowSelected, colSelected); // update currentState
                   // Switch player
                   currentPlayer = (currentPlayer == Seed.CROSS) ? Seed.NOUGHT : Seed.CROSS;
-                  //ai.setSeed(Seed.NOUGHT);
+                  
                }
             } else {        // game over
                initGame();  // restart the game
@@ -111,9 +112,9 @@ public class XoPanel extends JPanel {
       if (currentState == GameState.PLAYING) {
          statusBar.setForeground(Color.BLACK);
          if (currentPlayer == Seed.CROSS) {
-            statusBar.setText("X's Turn");
+            statusBar.setText("Normal Minion's Turn");
          } else {
-            statusBar.setText("O's Turn");
+            statusBar.setText("Purple Minion's Turn");
          }
       } else if (currentState == GameState.DRAW) {
          statusBar.setForeground(Color.RED);
@@ -143,3 +144,9 @@ public class XoPanel extends JPanel {
       });
    }
 }
+
+/*
+source code :
+    http://www.ntu.edu.sg/home/ehchua/programming/java/JavaGame_TicTacToe.html
+    http://www.ntu.edu.sg/home/ehchua/programming/java/JavaGame_TicTacToe_AI.html
+*/
