@@ -42,18 +42,21 @@ public class XoPanel extends JPanel {
             // Get the row and column clicked
             int rowSelected = mouseY / CELL_SIZE;
             int colSelected = mouseX / CELL_SIZE;
- 
+            //AIPlayerMinimax ai = new AIPlayerMinimax(board);
+            //Seed opp = Seed.NOUGHT;
+            //ai.setSeed(opp);
+            //int[] aimove = ai.move();
             if (currentState == GameState.PLAYING) {
-                AIPlayerMinimax ai = new AIPlayerMinimax(board);
-                ai.setSeed(Seed.NOUGHT);
-               if (rowSelected >= 0 && rowSelected < ROWS
+                    if (rowSelected >= 0 && rowSelected < ROWS
                      && colSelected >= 0 && colSelected < COLS
                      && board.cells[rowSelected][colSelected].content == Seed.EMPTY) {
                   board.cells[rowSelected][colSelected].content = currentPlayer; // move
                   updateGame(currentPlayer, rowSelected, colSelected); // update currentState
+                        
                   // Switch player
                   currentPlayer = (currentPlayer == Seed.CROSS) ? Seed.NOUGHT : Seed.CROSS;
-                  
+                  //updateGame(currentPlayer, aimove[0], aimove[1]);
+                  //currentPlayer = (currentPlayer == Seed.CROSS) ? Seed.NOUGHT : Seed.CROSS;
                }
             } else {        // game over
                initGame();  // restart the game
@@ -121,10 +124,10 @@ public class XoPanel extends JPanel {
          statusBar.setText("It's a Draw! Click to play again.");
       } else if (currentState == GameState.CROSS_WON) {
          statusBar.setForeground(Color.RED);
-         statusBar.setText("'X' Won! Click to play again.");
+         statusBar.setText("'Normal Minion' Won! Click to play again.");
       } else if (currentState == GameState.NOUGHT_WON) {
          statusBar.setForeground(Color.RED);
-         statusBar.setText("'O' Won! Click to play again.");
+         statusBar.setText("'Purple Minion' Won! Click to play again.");
       }
    }
  

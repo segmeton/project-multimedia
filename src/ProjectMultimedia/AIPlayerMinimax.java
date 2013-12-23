@@ -176,7 +176,5 @@ public class AIPlayerMinimax extends AIPlayer {
    }
 }
 
-// pruning
-
  
    
