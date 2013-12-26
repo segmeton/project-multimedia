@@ -72,9 +72,14 @@ public class XoPanel extends JPanel {
       statusBar.setBorder(BorderFactory.createEmptyBorder(2, 5, 4, 5));
       statusBar.setOpaque(true);
       statusBar.setBackground(Color.LIGHT_GRAY);
- 
+      
+      //JLabel score = new JLabel();
+      //JLabel instruction = new JLabel("You can click the button right there");
+      //score.setBackground(Color.black);
       setLayout(new BorderLayout());
-      add(statusBar, BorderLayout.PAGE_END); // same as SOUTH
+      //add(instruction, BorderLayout.EAST);
+      add(statusBar, BorderLayout.EAST); 
+      //add(score,BorderLayout.NORTH);
       setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT + 30));
             // account for statusBar in height
  
